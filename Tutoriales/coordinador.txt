@@ -1,0 +1,6 @@
+
+    *** Coordinador ***
+
+    Es un ayudante directo del profesor, mediador y orientador de la camada.
+
+    se encarga de Guiar y acompañar al docente, aportar a la clase, suplir al docente en caso de ser necesario

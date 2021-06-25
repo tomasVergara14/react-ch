@@ -1,0 +1,18 @@
+
+*** Top 10 ***
+
+Son los mejores promedios del curso, para estar alli debes sumar puntos.
+
+puntos:
+        - por asistir (+)
+        - faltar (-)
+        - valorar las clases, encuestas (+)
+        - entregas y que apruebes (+)
+        - desafios complementarios (+)
+        - entregas intermedias ( optima +5, en la reentrega +4, correcto +3, correcto en la reentrega +1,)
+        - si en una entrega recibes baja pero en la reentrega optimo (+2)
+        - proyecto final (9 = +9)
+
+el ranking se confecciona 30 dias despues de la cursada, alli el profesor ya habra subido todas las notas.
+
+Si nos encontramos en el top 10 tenemos acceso a los beneficios de pertenecer, se comunican del area de talento

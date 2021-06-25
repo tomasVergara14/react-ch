@@ -1,0 +1,20 @@
+
+ *** Entregas intermedias ***
+
+ Instancias parciales del proyecto final que sirve para conocer el estado de situacion del mismo
+
+ Sirve para tener una devolucion integral sobre el proceso que vienen realizando revisando la coherencia y cohesion
+
+ del proyecto.
+
+ revisar tu proyecto para obtener el mejor resultado
+
+ Tiene 3 estados:
+
+    - Bajo: no cumple con todos los requisitos y debe realizar ajustes en su trabajo
+
+    - Correcto: cumple con lo minimo solicitado pero tiene errores que debe corregir
+    
+    - Optimo: cumple y supera lo solicitado
+
+    

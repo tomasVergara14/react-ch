@@ -1,0 +1,11 @@
+
+
+*** Informacion del curso ***
+
+Al ingresar en el curso vere todo el listado de clases que posee y en cada clas el detalle de la misma, en la 
+
+parte de arriba tenemos el ingreso de acceso a la clase, se habilita solo los dias de cursada.
+
+Al costado se ven las estadisticas de tu cursado.
+
+Una vez finalizada a las 24 horas queda la grabacion de la clase 

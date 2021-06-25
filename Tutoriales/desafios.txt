@@ -1,0 +1,12 @@
+
+ *** Desafios ***
+
+ Cuentas con 7 dias para realizar la entrega de cada desafio. hay desafios por clases. Y 7 dias extras para la 
+
+ reentrega con las correciones.
+
+ El plazo final de entrega y reentrega es de 14 dias.
+
+ Para entregar un desafio, debes ingresar en la clase correspondiente, alli se ven los detalles de este y puedes
+
+ dejar un mensaje tambien 

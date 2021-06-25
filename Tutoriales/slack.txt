@@ -1,0 +1,12 @@
+
+ *** Slack ***
+
+ Dias antes te llegara un mail para unirte a Slack, es una plataforma por la cual vas a tener contacto con el
+
+ docente, tutor, compañeros y comunidad coder house.
+
+ Se usa para responder dudas y colaborar. (los desafios se cargan en la plataforma)
+
+ Vas a ver varios canales, los de tu curso los identificas porque tienen un candado al lado del nombre
+
+ Los canales que tienen un signo numeral, son canales abiertos con otras finalidades

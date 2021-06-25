@@ -1,0 +1,10 @@
+
+ *** Clases ***
+
+ los dias de cursado en su horario, ingresas a la plataforma, y haces clic en "ir al vivo" que esta rojo
+
+ haces clic, se abre la pantalla con la clase. Si no, puedes ingresar por zoom haciendo clic en "ingresar zoom"
+
+ Ingresar con nombre igual que el que esta en mi perfil (de eso depende el presente, hablar con el tutor)
+
+ Tener desactivado el microfono a menos que lo pidan

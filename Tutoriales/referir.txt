@@ -1,0 +1,6 @@
+
+ *** Referir amigos ***
+
+ El programa de referidos consiste en compartirle un codigo de descuento, esto le permite descontar un %10-%15
+
+  de descuento, y el que brindo el codigo recibe dinero
