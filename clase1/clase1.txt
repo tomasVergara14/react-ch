@@ -70,7 +70,7 @@ Nivelacion:
                 Se pueden seleccionar/capturar elementos del HTML por su "clase" o por su "id", o por su "tipo"
 
 
-    -JS:
+    - JS:
                Es un lenguaje de programacion web, es interpretado. 
 
                un lenguaje interpretado es un lenguaje de programacion para el que la mayoria de sus 
@@ -83,15 +83,85 @@ Nivelacion:
 
                sino podemos incluir el codigo directamente:
 
-               <script>
+                <script>
                     function mi_function(){
                         document.getElementById("mi_function").innerHTML = "ejemplo de mi funcion"
                     }
-               </script>
+                </script>
 
-               La ejecucion de los scripts puede ser: 
+                La ejecucion de los scripts puede ser: 
 
-               - Directa: Es el metodo de ejecucion de scripts mas basico
+                - Directa: Es el metodo de ejecucion de scripts mas basico. Se incluyen las instrucciones dentro de
+
+                        la etiqueta <script>, el navegador ejecuta una despues de otra
+
+                - Respuesta a un evento: Los eventos son acciones que realiza el usuario. JS atrapa esas acciones
+
+                        y realiza acciones como respuesta
 
 
+
+    - Variables:
+
+                Usar variables, es la manera estandar de almacenar valores en memoria
+
+                tipos:
+
+                -Let - se puede acceder de forma local en determinado bloque de codigo 
                 
+    
+    - Constante:
+
+                son espacios de memoria que no pueden cambiar la referencia con la que fueron inicializadas
+
+                Si puede cambiar el contenido
+
+
+    - This:
+
+              se utiliza para referencia a un elemento del codigo.
+              
+              Ej: 
+
+                    var obj = {
+
+                        foo : function() {...},
+                        bar : function() {
+                            
+                            var that = this;
+                            document.addEventListener('click', function(e){
+                                that.foo();
+                            })
+                        }
+                    }
+            
+              Sin el this en esta funcion no podriamos llamar a foo()
+
+
+              Con el metodo bind podriamos indicarle que this hace referencia a un contexto y no a otro
+
+              
+              Ej: 
+
+                    var obj = {
+
+                        foo : function() {...},
+                        bar : function() {
+                            
+                            document.addEventListener('click', function(e){
+                                thisfoo();
+                            }.bind(this))
+                        }
+                    }
+
+
+
+    - Clases:
+
+
+              Son muy parecidas a las funciones constructoras de objetos que realizamos antes, pero ahora bajo el 
+
+              paradigma de clases
+
+
+

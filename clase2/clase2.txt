@@ -6,6 +6,7 @@
 
 1 - El acceso indiscriminado al DOM es caro, por eso se busco maneras de optimizarlo.
 
+Hace referencia a que tenga que cargar toda la pagina de vuelta
 
 En vez de aplicar uno a uno los cambios de los cincos nodos, React procesa este resultado en una memoria.
 
