@@ -1,0 +1,85 @@
+
+Desafios:
+
+    - Entrgables:
+                relacionados con el proyecto final. Deben ser subidos obligatoriamente a la plataforma
+
+                Tienen fecha de entrega hasta 7 dias despues de finalizada la clase
+
+    -  Genericos:
+                para practicar.
+
+    -  Proyecto Final:
+                se debe subir a la plataforma la ante-ultima o ultima clase del curso. Luego de finalizado tendras
+
+                hasta 20 dias para cargarlo. Pasados esos dias se inhabilita.
+
+                La idea es que cada estudiante pueda utilizar su proyecto final como parte de su portfolio.
+
+
+
+Nivelacion:
+
+    - React JS:
+                es una biblioteca para desarrollo web
+
+                esta desarrollado en JS
+
+    - HTML:
+                es un lenguaje de etiquetas, el cual dara estructura para nuestras paginas web
+
+                HTML 5- es una nueva version 
+
+                DOCTYPE- no es una etiqueta sino que es una instruccion para indicar al navegador que version de
+
+                HTML vamos a utilizar
+
+                <title> define el titulo del documento, y este se muestra en la barra de titulo del navegador
+
+                <base> define la URL base para las URLs relativas en la pagina.
+
+                <link> utilizada para enlazar JS y CSS externos
+
+                <meta> definimos la codificacion que tendra nuestro archivo ("UTF-8", "ANSI")
+
+                <script> define tanto un script interno como un enlace hacia un script externo
+
+                <noscript> Define un contenido alternativo a mostrar cuando el navegador no soporta scripting
+
+    - DOM:
+                Document Object Model o modelo de objetos del navegador
+
+                nos sirve para acceder a cualquiera de los componentes que hay dentro de una pagina.
+
+                Por medio del DOM se controla al navegador y sus elementos
+
+
+    - API´s:
+                Siempre revisar que navegador soportan nuestras API´s
+
+    
+    - CSS:
+                Cascading style sheets- hojas de estilo en cascada 
+
+                es un lenguaje de diseño grafico con el cual podremos dar estilos a nuestras webs
+
+                para agregar una hoja de estilo en el documento HTML usamos <link>
+
+                ej:     <link rel="stylesheet" href="css/style.css" />
+
+                Se pueden seleccionar/capturar elementos del HTML por su "clase" o por su "id", o por su "tipo"
+
+
+    -JS:
+               Es un lenguaje de programacion web, es interpretado. 
+
+               un lenguaje interpretado es un lenguaje de programacion para el que la mayoria de sus 
+
+               implementaciones ejecuta las instrucciones directamente
+
+               para incluirlo de forma externa en nuestro HTML lo hacemos con la etiqueta <script>
+
+               ej:      <script type="text/javascript" src="prueba.js"></script>
+
+               sino podemos incluir el codigo directamente
+
