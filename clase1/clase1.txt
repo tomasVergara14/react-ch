@@ -81,5 +81,17 @@ Nivelacion:
 
                ej:      <script type="text/javascript" src="prueba.js"></script>
 
-               sino podemos incluir el codigo directamente
+               sino podemos incluir el codigo directamente:
 
+               <script>
+                    function mi_function(){
+                        document.getElementById("mi_function").innerHTML = "ejemplo de mi funcion"
+                    }
+               </script>
+
+               La ejecucion de los scripts puede ser: 
+
+               - Directa: Es el metodo de ejecucion de scripts mas basico
+
+
+                

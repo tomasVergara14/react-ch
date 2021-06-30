@@ -1,0 +1,81 @@
+
+
+*** Instalacion y configuracion del entorno ***
+
+
+
+1 - El acceso indiscriminado al DOM es caro, por eso se busco maneras de optimizarlo.
+
+
+En vez de aplicar uno a uno los cambios de los cincos nodos, React procesa este resultado en una memoria.
+
+Calcula el area de impacto y determina la menor cantidad de movimientos de modo heuristico, o sea no sabe donde
+
+no pueden haber ocurrido cambios.
+
+
+2 - Flujo de datos unidireccional
+
+Para establecer sweguridad requiere que los datos y los cambios reunan 2 caracteristicas:
+
+    - Unidireccional
+    - De arriba hacia abajo (bajan los datos, suben los eventos)
+
+
+
+*** Virtual DOM ***
+
+Es un patron de comportamiento y React lo implementa con una tecnologia llamada "fiber"
+
+Todo lo que React sabe de tu aplicacion y cada nodo o "fibra"
+
+
+El Virtual DOM es una representacion virtual de la IU que se mantiene en memoria y en sincronia "reconciliado"
+
+con el DOM real
+
+
+React ejecuta:
+
+    -  El "diffing" = identifica los cambios
+
+    -  La "reconciliacion" donde se actualiza el DOM con los resultados del diff
+
+
+
+
+*** Node.js ***
+
+
+es un entorno de JS que le permite al codifo en js ser ejecutado en nuestra computadora.
+
+Podemos darle a node un archivo de JS y este puede ejecutarlo, y darle acceso a recursos de nuestra computadora.
+
+Recientemente se creo un nuevo entorno que es Deno, que tambien permite ejecucion de JS y typescript pero con una
+
+nueva perspectiva en seguridad
+
+
+- NPM
+        Al usar Node.js se deben instalar modulos nuevos (librerias). Esto se hace con la herramienta 
+        
+        npm ( Node Package Manager )
+
+        sirve como repositorio, tambien para instalar y desinstalar paquetes, gestionar versionas y gestionar
+
+        dependencias necesarias para un proyecto 
+
+
+
+- CLI
+        Es la Interfaz de Lineas de Comandos, permite a los usuarios dar instrucciones a algun programa 
+        
+        informatico por medio de una linea de texto simple
+
+        para instalar React.js debemos ejecutar el comando:
+
+                npm install -g create-react-app "nombre-app" (sin comillas)
+
+                cd nombre-app
+
+                npm start
