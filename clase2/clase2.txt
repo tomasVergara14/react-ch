@@ -48,7 +48,7 @@ React ejecuta:
 *** Node.js ***
 
 
-es un entorno de JS que le permite al codifo en js ser ejecutado en nuestra computadora.
+es un entorno de JS que le permite al codigo en js ser ejecutado en nuestra computadora.
 
 Podemos darle a node un archivo de JS y este puede ejecutarlo, y darle acceso a recursos de nuestra computadora.
 
