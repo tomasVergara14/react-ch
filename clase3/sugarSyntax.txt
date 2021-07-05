@@ -130,3 +130,20 @@ otros ejemplos:
                             [guest, admin] = [admin,guest]
                             console.log(`${guest} ${admin} `)   //revisar esto
 
+
+                        
+                        El resto '...'
+
+                        si el array es mayor que la lista de la izquierda, los items extras son omitidos
+
+                        ex:
+
+                            var [name1, name2] = ["Jul", "Tom", "Marc", "Sol"]  //toma name1 - julio, name2 - Tomi
+
+                        Si queremos obtener el resto de los valores podemos hacerlo con "..."
+
+                            var [name1, name2, ...rest] = ["Jul", "Tom", "Marc", "Sol"]
+
+                            console.log(rest[0])    // devuelve "Marc"
+                            console.log(rest[1])    // devuelve "Sol"
+
