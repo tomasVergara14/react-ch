@@ -1,0 +1,6 @@
+
+    Transpiling
+
+Es el proceso de convertir codigo escrito en un lenguaje a su representacion en otro lenguaje.
+
+Usualmente simplifican la escritura del lenguaje o representacion original

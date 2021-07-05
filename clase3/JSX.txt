@@ -1,0 +1,59 @@
+
+    JSX
+
+Es una extension de sintaxis de JS que se parece a HTML, es de JS, no de react, es recomendado usarlo igual.
+
+Es una extension que permite hacer llamadas a funciones y a construccion de objetos
+
+JSX se transforma en codigo de JS, nos permite ver errores en tiempo de compilacion, asignar variables, retornar
+
+metodos, etc.
+
+ex:
+        <div className="active" >Hola coders</div>
+        React.createElement('div',{className:'active'}, 'Hola coders' )
+
+
+
+    *** Styling en JSX ***
+
+Nos permite utilizar estilos inline, solo necesitamos convertirlos por convencion
+
+ex:
+        let stlyes= {
+            borderColor: '#999'
+        }
+
+        const jsx = {
+            <div stlye ={styles} >
+                Hola coders
+            </div>
+        }
+
+Y se puede hacer en la misma linea, solo se debe usar doble llave {{}}
+
+La primer llave para avisar que se agrega un objeto en JS
+
+La segunda para empezar a escribir el objeto en si
+
+ex:
+        const Salute = () => <p style={{marginLeft:15 }} > Hello </p>
+
+
+
+
+    *** Reglas ***
+
+- Los elementos deben ser bañanceados, por cada apertura debe haber un cierre
+
+    <img src=""></img>
+
+- Si el elemento no tiene hijos debe ser autocerrado
+
+    <img src="" />
+
+- Class es palabra reservada, en su lugar se debe usar className
+
+    <img src='' className="my-class" >
+
+- En JSX se utilizan los estilos, los eventos del DOM pero en todo se utiliza camelCase

@@ -1,0 +1,16 @@
+
+    Webpack
+
+es un module bundler o un empaquetador de modulos.
+
+Podemos tener un modulo JS que vaya a depender de otros modulos .js con imagenes en diferentes formatos como JPG
+
+o estar utilizando preprocesador de CSS como SASS o Stylus
+
+Webpack recoge todos estos modulos y los transforma en assets que puede entender el navegador
+
+Ya viene incluido en la aplicaciongenerada por create-react-app
+
+El equipo de react es quien se encarga de mantener esas actualizaciones, podemos modificarlas pero es todo un tema
+
+Modificarlo puede darnos mas flexibilidad pero no siempre es el caso y las cosas se pueden romper

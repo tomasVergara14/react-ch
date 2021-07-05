@@ -1,0 +1,22 @@
+
+
+    Retrocompaibilidad
+
+Es la capacidad de una aplicacion para utilizar datos creados o pensados para versiones anteriores de ella misma.
+
+Permitir la ejecucion o el uso de versiones del software anteriores de la actual.
+
+
+Polyfill:
+            "Sabemos que ustedes no pueden multiplicar. Si les cuesta multiplicar... pueden simplemente sumar"
+
+
+Los polyfills nos permiten hacer nuestra aplicacion compatible con navegadores antiguos que no admiten de forma 
+
+nativa alguna nueva funcionalidad
+
+Un Polyfill es un fragmento de codigo que se utiliza para proporcionar una funcionalidad moderna en navegadores
+
+antiguos que no lo admiten de forma nativa. Por ejemplo para imitar la funcionalidad de un elemento HTML Canvas
+
+en un Explorer 7 
