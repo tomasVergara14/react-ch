@@ -1,0 +1,132 @@
+
+
+    Sugar syntax
+
+
+significa que las nuevas caracteristicas del lenguaje no son realmente nuevas.
+
+Es la sintacxis agregada a un lenguaje de programacion con el objetivo de hacer mas facil y eficiente 
+
+su utilizacion. Favorece su escritura, lectura y comprension
+
+Hay transpiladores como babel que convierten esa sintaxis nueva en la antigua, para que pueda ser leido por 
+
+diferentes navegadores.
+
+ex:
+
+    i = i + 1 => i++
+
+otros ejemplos:
+
+    - Spread operator: 
+
+                        [a, ...arr]
+                        
+                        Permite a un elemento iterable, como un array o cadena, ser expandido en lugares 
+                        donde cero o mas argumentos o elementos son esperados
+                        
+                        ex:
+                            
+                            function sum(x,y,z){
+                                return x + y + z
+                            }
+                            
+                            const numbers = [1,2,3]
+                            
+                            console.log(sum(...numbers))        //muestra 6
+
+
+    - Propiedades dinamicas: 
+
+                        {foo:"bar",["baz" + id]:42}
+
+                        Podemos crear propiedades dinamicas en los objetos de JS. podemos tener un objeto como:
+
+                        function person(nombre, apeliido, edad){
+                            
+                            this.nombre = nombre;
+                            this apellido = apellido;
+                            this.edad = edad
+
+                        }
+
+                        Esto es una definicion estatica, para agregar una nueva propiedad dinamica lo podriamos
+                        hacer
+
+                        var p1 = new person("victor", "cuervo", "32");
+                        persona.ciudad = "Avila"
+
+                        pero de esta forma solo se agregara a la persona "p1"
+
+                        var p2 = new person("ana", "guzman", "20")
+                        document.write(person.ciudad)
+
+                        esto va a devolver "undefined", la propiedad ciudad solo se añadio a "p1"
+
+                        para crear una propiedad dinamica que se aplica a todas las instancias debemos utilizar
+                        la sentencia prototype
+
+                        var p1 = new person("victor", "cuervo", "32");
+                        persona.prototype.ciudad = "Avila"
+
+                        y si escribimos:
+
+                        var p2 = new person("ana", "guzman", "20")
+                        document.write(person.ciudad)
+
+                        y esto devuelve "Avila"
+
+
+    - Deep matching: 
+    
+                        var {a: val} = {a: 2}
+
+    - Asignacion en desestructuracion: 
+    
+                        var [a = 1, b = 2, c = 3, d] = [4, 5]
+
+                        Los objetos nos permiten crear una entidad individual que almacena elementos de informacion
+                        con una clave
+
+                        Los arrays nos permiten reunir elementos de informacion en una coleccion ordenada
+
+                        La asignacion desestructurante es una sintaxis especial que nos permite desempaquetar arrays
+                        u objetos en varias variables.
+
+                        ex:
+                            
+                            var array = ["Jhon", "Smith"]       // un array con el nombre y apellido
+
+                            var [ firstname, surname ] = array  // asignacion desestructurante
+                                                                // fija firstname = array[0]
+                                                                // fija surname = array[1]
+                            alert (firstname)                   // muestra "Jhon"
+                            alert (surname)                     // muestra "Smith"
+
+                        
+                        Podemos descartar elementos por medio de una coma extra
+
+                            var [fisrtname , ,]
+
+                        
+                        Funciona con cualquier iterable en el lado derecho, puede ser con cualquier objeto iterable
+                        no solo con arrays (strings por ejemplo)
+
+                            var [a, b, c] = "abc"               // devuelve ["a", "b", "c"]
+
+                        
+                        tambien podemos usar cualquier asignable en el lado izquierdo
+
+                            var user = {}
+                            [user.name, user.surname] = "Jhon Smith".split(' ')
+
+                        
+                        Podemos intercambiar variables
+
+                            var guest = "Jhon"
+                            var admin = "Smith"
+
+                            [guest, admin] = [admin,guest]
+                            console.log(`${guest} ${admin} `)   //revisar esto
+
