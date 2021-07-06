@@ -87,3 +87,19 @@ Luego de todo instalado se ingresa en la carpeta y se corre npm start
                         - Se toma codigo nuevo y se traduce en un codigo equivalente que sea interpretado por los 
 
                         diferentes navegadores
+
+
+
+
+
+
+    *** Componentes ***
+
+Es una pieza de la interfaz de usuario que permite ser reutilizable, cumple una funcion determinada y trabajar
+
+de manera aislada.
+
+Los componentes pueden ser:
+
+    - Stateless
+    - Statefull
