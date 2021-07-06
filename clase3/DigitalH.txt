@@ -1,0 +1,28 @@
+
+    React
+
+Es una biblioteca 100% en JS desarrollada por Facebook
+
+Esta construido entorno a hacer funciones, que toman actualizaciones del estado de la aplicacion y las traducen
+
+en una representacion virtual de la misma
+
+Genera una representacion virtual del DOM
+
+El virtual DOM es una copia exacta del DOM real y compararlo constantemente, y cuando cambia el estado de la app
+
+la copia se actualiza. De esta forma se evita actualizar toda la pagina completa, y solo el componente que cambio
+
+
+
+    *** Instalacion ***
+
+debes estar parado en la carpeta donde quieras trabajar
+
+Se puede instalar con cualquiera de los dos comandos:
+
+        - npm create-react-app "nombre-de-la-app"
+        - npm init react-app "nombre-de-la-app"
+
+
+La instalacion es lenta, finaliza cuando te vuelve a habilitar la escritura de comandos
