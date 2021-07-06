@@ -24,5 +24,44 @@ Se puede instalar con cualquiera de los dos comandos:
         - npm create-react-app "nombre-de-la-app"
         - npm init react-app "nombre-de-la-app"
 
+El nombre de la app no puede llevar espacios
+
+
+
+    *** Estructura de archivos ***
+
+- node modules
+            
+            estan todos los paquetes de NPM instalados para que nuestro proyecto React funcione correctamente
+
+- public
+
+            "index.html"  - Es el archivo que se va a cargar cuando el usuario ingresa a la URL de nuestra app
+
+                          - tiene un <div id="root" ></div> aca se renderiza toda la aplicacion, no se toca
+
+- src
+            "index.js"    - tiene varios "import" es como el funcion require, se trae algo de otra libreria y se
+                            lo almacena en una variable
+                          
+                          - Tiene el metodo .render() ; ReactDom.render(<App />, document.getElementById('root'))
+                            aqui se captura el root que esta en index.html
+                            y el App es un componente que se esta importando al archivo index.js
+
+            "app.js"      - Tiene una funcion llamada App que se exporta al final export default  App
+                          
+                          - El contenido se esta exportando a index.js y desde alli se manda a renderizar a HTML
+
+- .gitignore
+
+- package.json
+
+            Se especifican las dependencias y las versiones de los paquetes de las que depende el proyecto
+            
+- README.md
+- yarn.lock
+
 
 La instalacion es lenta, finaliza cuando te vuelve a habilitar la escritura de comandos
+
+Luego de todo instalado se ingresa en la carpeta y se corre npm start
