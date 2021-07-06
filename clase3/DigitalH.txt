@@ -57,7 +57,7 @@ El nombre de la app no puede llevar espacios
 - package.json
 
             Se especifican las dependencias y las versiones de los paquetes de las que depende el proyecto
-            
+
 - README.md
 - yarn.lock
 
@@ -65,3 +65,25 @@ El nombre de la app no puede llevar espacios
 La instalacion es lenta, finaliza cuando te vuelve a habilitar la escritura de comandos
 
 Luego de todo instalado se ingresa en la carpeta y se corre npm start
+
+
+    
+    *** Ecosistema de React ***
+
+
+    Sistema de empaquetado: 
+
+                        - "Webpack", es una libreria, empaquetador de modulos
+                        
+                        - Se compilan muchos archivos JS en 1 solo
+
+                        - Resuelve el problema de trasmision de multiples archivos de JS a la app
+
+    
+    Transpilacion:
+
+                        - "Babel", es una libreria que se encarga de la Traduccion
+
+                        - Se toma codigo nuevo y se traduce en un codigo equivalente que sea interpretado por los 
+
+                        diferentes navegadores
