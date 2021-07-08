@@ -1,0 +1,199 @@
+
+    Componentes I
+
+
+Las aplicaciones en React se construyen mediante componentes
+
+Esto permite modularizar y de facil mantenimiento a pesar de su complejidad
+
+
+    *** Diseño modular ***
+
+Permiten separar la interfaz de usuario en piezas independientes, reutilizables y a pensar en cada pieza de forma
+
+aislada
+
+La idea es que la app sea un conjunto de componentes que trabajan entre si
+
+
+    *** Ventajas ***
+
+- Favorece la separacion de responsabilidades (cada componente tiene una unica tarea)
+
+- Es mas facil de reutilizar cada compoennte porque tienen la logica de estada y los elementos visuales por separado
+
+- Es mas facil hacer pruebas unitarias
+
+- Mejora el rendimiento de la app
+
+- La app es mas facil de entender
+
+
+
+    *** Tipos de componentes ***
+
+
+- Class components:
+                    Componentes basados en clases
+
+
+
+- Function components:
+                    Componentes basados en funciones
+
+
+
+Ambos pueden recibir propiedades (props), tienen la capacidad de renderizar un unico elemento (este puede tener 
+
+mas elementos adentro)
+
+
+
+    *** Propiedades ***
+
+
+Son la forma que tiene React para pasar parametros de un componente superior a sus children
+
+Asi se implementa el flujo de datos unidireccional
+
+Si alguna prop es una funcion, el child component puede llamarla para provocar efectos secundarios en el parent
+
+
+
+- Class components:
+                    Componentes basados en clases
+
+                    Las propiedades enviadas al componente las recibiremos a traves de "this.props" para acceder
+                    a un objeto en el cual estan las props
+
+
+- Function components:
+                    Componentes basados en funciones
+                    
+                    Se reciben las props como parametros de la funcion
+
+                    ({name}) => <p> {name} </p>
+
+                    Al definir la funcion se prescinde del metodo render, porque no estamos haciendo una clase
+
+                    La propia funcion es el equivalente al metodo render () que se teniamos al crear componentes
+                    por medio de una clase 
+
+                    Ex:
+
+                            const App = (props) =>{
+                                return(
+
+                                    <p>
+                                        ¡Vamos {props.name} !
+                                    </p>
+                                )
+                            }
+
+                            render(<App name="coder" />, document.getElementById('root'))
+
+
+
+
+                            const App = ({ name }) =>{
+                                return(
+
+                                    <p>
+                                        ¡Vamos {name} !
+                                    </p>
+                                )
+                            }
+
+                            render(<App name="coder" />, document.getElementById('root'))
+
+
+
+
+
+Las propiedades van encerradas entre {}
+
+Los componentes de presentacion:
+            
+            - Orientados al aspecto visual
+            - No tienen dependencias con fuentes de datos
+            - Reciben callbacks por medio de props
+            - Pueden ser descritos como componentes funcionales, usualmente no tienen estado (Stateless)
+
+Los componentes de presentacion usualmente no tienen estado, por eso hace mas sentido utilizar function components
+
+Todo componente puede recibir de su parent (padre-superior), props y children
+
+sintaxis:
+
+                            const Titulo = ({name} = props ) =>{
+                                <h1> {nombre} </h1>
+                            } 
+
+                            const Item = (props) =>{
+                                <a href="=" > {props.value} </a>
+                            }
+
+                            const Input = (props) => {
+                                <input type="text" placeholder= { props.placeholder } >
+                            }
+
+
+
+
+
+    *** Componentes contenedores ***
+
+Encapsula a otros componentes y proporciona las propiedades que necesitan.
+
+Modifican el estado de la app para que el usuario vea el cambio en los datos (Statefull)
+
+
+los componentes contenedores:
+
+            - Orientados al funcionamiento de la app
+            - Contienen componentes de presentacion y/u otros contenedores
+            - Se comunican con las fuentes de datos
+            - Usualmente tienen estado para representar el cambio en los datos
+
+
+Define los datos contenidos en la app y los manipula, creando los componentes hijos y mostrandolos en el render
+
+
+                            class AppContainer extends React.Component {
+
+                                constructor (props){
+                                    super(props);
+                                    this.state = {
+                                        temas : [ "Javascript", "React js", "Components" ]
+                                    }
+                                }
+
+                                render(){
+
+                                    const items = this.state.temas.map( t =>{
+                                        <Item valor={ t } />
+                                    } )
+
+                                    return(
+                                        <div>
+                                            <Titulo nombre="List Items" />
+                                            <ul> {items} </ul>
+                                        </div>
+                                    )
+                                }
+                            } 
+
+Este tipo de componentes sera el encargado de realizar llamadas a las API´s externas y/o establecer la logica a
+
+realizar en funcion de las acciones que realice el usuario sobre la interfaz
+
+
+
+
+    *** Children ***
+
+Ideal cuando:
+
+            - Queremos que un elemento quede dentro de otro sin que sepan el uno del otro
+            
+            - Necesitamos implementar patrones mas complejos
