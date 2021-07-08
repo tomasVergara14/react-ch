@@ -95,11 +95,42 @@ Luego de todo instalado se ingresa en la carpeta y se corre npm start
 
     *** Componentes ***
 
-Es una pieza de la interfaz de usuario que permite ser reutilizable, cumple una funcion determinada y trabajar
+Es una pieza de la interfaz de usuario que permite ser reutilizable, cumple una funcion determinada y trabaja
 
 de manera aislada.
 
+Es una funcion nativa de JS
+
 Los componentes pueden ser:
 
-    - Stateless
+    - Stateless / funcionales / sin estado:
+                                        no implementan mucha logica mas que un return
+
+                                        para crear uno solo hace falta:
+                                        
+                                        1- importar react ( import React from 'react')
+                                        2- crear una funcion nativa de JS(
+                                            
+                                            function Saludo() {
+                                                return (
+                                                    <h1> !Hola mundo¡ </h1>
+                                                )
+                                            }
+                                        )
+                                        3- Exportarlo (export default Saludo)
+                                        4- Para usarlo solo debes importarlo (import Saludo from './Saludo')
+                                        5- Usarlo como una etiqueta HTML y cerrarlo al finalizar(
+
+                                            function App() {
+                                                return (
+                                                    <>
+                                                        <div></div>
+                                                        <Saludo/>           // si no falla
+                                                    </>
+                                                )
+                                            }
+                                        )
+
     - Statefull
+
+
