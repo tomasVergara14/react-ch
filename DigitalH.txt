@@ -104,11 +104,29 @@ Es una funcion nativa de JS
 Los componentes pueden ser:
 
     - Stateless / funcionales / sin estado:
-                                        no implementan mucha logica mas que un return
+
+                                        Se llaman stateless poruqe internamente implementan un return con logica
+                                        sencilla que entrega una estructura html                     
+
+                                        pueden haber estructuras de control ("if") y metodos de arrays
+
+                                        Solo pueden devolver 1 solo elemento HTML, no puede haber etiquetas 
+                                        hermanas
+
+                                        ex: 
+                                        function NavBar(){
+                                            return (
+                                                <nav>
+                                                    <a href="" >Home</a>
+                                                    <a href="" >Productos</a>
+                                                </nav>
+                                            )
+                                        }
 
                                         para crear uno solo hace falta:
                                         
-                                        1- importar react ( import React from 'react')
+                                        1- importar react: " import React from 'react' "
+
                                         2- crear una funcion nativa de JS(
                                             
                                             function Saludo() {
@@ -117,8 +135,11 @@ Los componentes pueden ser:
                                                 )
                                             }
                                         )
-                                        3- Exportarlo (export default Saludo)
-                                        4- Para usarlo solo debes importarlo (import Saludo from './Saludo')
+
+                                        3- Exportarlo: " export default Saludo "
+
+                                        4- Para usarlo solo debes importarlo: " import Saludo from './Saludo' "
+
                                         5- Usarlo como una etiqueta HTML y cerrarlo al finalizar(
 
                                             function App() {
@@ -134,3 +155,86 @@ Los componentes pueden ser:
     - Statefull
 
 
+
+
+
+
+
+
+    *** JSX ***
+
+Es una sintaxis JavaScript XML es una extension de la sintaxis de JS muy utilizada en React
+
+es similar a HTML
+
+React acepta que la logica de renderizacion de componentes esta intrinsecamente unida a la logica de la interfaz 
+de usuario
+
+React crea porciones de contenidos aislados llamados componentes que contienen ambas por JSX
+
+Todas las etiquetas necesitan ser correctamente cerradas ("</>")
+
+Otra diferencia es que el atributo class es "className" ya que class es una palabra reservada diferente
+
+Se pueden escribir variables con solo contenerlos en "{}"
+
+Se pueden utilizar los metodos: Map, filter, reduce (no se puede for, ni forEach)
+
+
+React trata a los componentes que empiezan con letras minusculas como etiquetas del DOM, pero las que comienzan con
+
+mayusculas las toma como componentes y requiere que el mismo este definido
+
+
+
+
+    *** Props ***
+
+
+Las propiedades del componente
+
+Una propiedad es un valor que se envia al componente en el momento que se llama o se implementa
+
+Es un objeto literal que contiene todas las propiedades que sean pasadas al momento de su uso
+
+1- Se pasa (props) como parametros
+
+2- Se imprime la propiedad deseada en el lugar deseado 
+
+ex:
+    function Saludo (props) {
+
+        return(
+            <div>
+                <h1> {props.titulo} </h1>
+                <p> {props.texto} </p>
+            </div>
+        )
+    }
+
+Esto lo hace 100% reutilizable y no tiene un contenido fijo, si no que cambia segun el valor de sus propiedades
+
+Las props reciben su valor cuando el componente es invocado por la app
+
+De esa forma el componente sabe que valor tienen cuando es llamado 
+
+
+     function Saludo (props) {
+
+        return(
+            <div>
+                <h1> {props.titulo} </h1>
+                <p> {props.texto} </p>
+            </div>
+        )
+    }
+
+
+    function App (){
+        return(
+            <Saludo
+                titulo="¡Hola gente!"
+                texto="Aca con hambre"
+            />
+        )
+    }
