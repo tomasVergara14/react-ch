@@ -238,3 +238,13 @@ De esa forma el componente sabe que valor tienen cuando es llamado
             />
         )
     }
+
+
+
+
+    *** Key Props y Map ***
+
+
+Las props que no son cadenas de texto van con llaves al ser invocados en el component padre
+
+El componente que imprime esas props, 
