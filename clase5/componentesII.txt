@@ -1,0 +1,371 @@
+
+    Componentes II
+
+
+    - Anatomia de un componente:
+
+
+- Props:
+            Pueden ser lo que sea valores comunes (num, bool, array, obj), funciones, componentes (son funciones),
+
+            Children, valores inyectados por librerias (location, rutas, traducciones)
+
+            
+            Relacion de Children-Props, React inyecta automaticamente children en las props si encuentra alguno
+
+            ex:
+                    function SuperForm (props){
+                        
+                        console.log(props) //solo tiene titulo
+                        return(
+                            <>
+                                <h1> {props.title} </h1>
+                            </>
+                        )
+                    }
+
+                    function App(){
+
+                        return(
+                            <SuperForm
+                            title="Hey"/>
+                        )
+                    }
+
+                    render(<App/>, document.getElementById("root"))
+
+
+            Aqui <SuperForm> no tiene Children
+
+            Si le agregamos children en el JSX los inyecta como objeto si es unico o como array si son varios
+
+            ex:
+                    function SuperButton() {
+                        
+                        function doSomething(){
+
+                            console.log('Hey coders')
+                        }
+                        return <button type="button" onClick={doSomething} > Click me </button>
+                    }
+
+                    function SuperForm (props) {
+                        
+                        console.log(props)  // tiene props y children
+
+                        return 
+                        <>
+                            <h1> {props.title} </h1>
+                            {props.children}
+                        </>
+                    }
+
+                    function App(){
+                        
+                        return 
+                        <SuperForm title="Hey">
+                            <SuperButton/>
+                        </SuperForm>
+
+                    }
+
+
+
+- Estado/ State:
+
+           El estado en las clases era mas simple de mantener porque las clases en si tienen un contexto propio
+
+           (this.state) persistente
+
+           ex:
+                    class App extends Component {
+
+                        constructor() {
+
+                            super();
+                            this.state = {
+                                name: 'React' 
+                            }
+                        }
+                    } 
+
+                    render(){
+                        return(
+                            <div>
+                                <Hello name={this.state.name} />            // Muestra Hello React
+                            </div>
+                        )
+                    }
+
+            
+           
+            Usando "this.setState" se podia guardan en "this.state", que persiste entre renders, porque la clase
+
+            se crea al montar y se destruye al desmontar
+
+            ex: 
+                    class App extends Component{
+                        
+                        constructor(){
+
+                            super();
+                            this.state ={
+                                name: 'ReactClass'
+                            }
+                        }
+
+                        updateName = ()=>{
+                            this.setState( {name:'ReactFunction' } )
+                        }
+                    }
+
+                    render(){
+                        return(
+                            <div onClick={this.updateName} >
+                                <Hello name={this.state.name} >     // Al hacer click mostrara Hello ReactFunction
+                            </div>
+                        )
+                    }
+
+            
+            El problema de las funciones en estado es que solo viven durante el tiempo que son ejecutadas
+
+                    function App(){
+                        
+                        const state = 'Esto morira al finalizar la funcion :( '
+
+                        return <p> {state} </p>
+                    }
+
+                    render(<App/>, document.getElementById('root'))
+
+
+            
+            En base a esto se determina la forma en la que ocurren las cosas en JS, al terminar la ejecucion de 
+
+            una funcion seran puestas a disposicion del garbage collector
+
+            Todas  las const o variables que declare para intentar mantener el estado moriran y seran reiniciadas en
+
+            cada render 
+
+            Cada evento que ocurra cumpliendo ciertas caracteristicas, invocara el completo de la funcion una vez
+
+            por cada re-render
+
+            entonces debemos usar:
+
+                    "State Hook"
+
+
+
+
+ - State Hook:
+
+            Antes:
+                    import React, {Component} from 'react'
+                    import {render} from 'react-dom'
+                    import Hello from './Hello'
+
+                    class ClassApp extends Component {
+
+                        constructor(){
+
+                            super()
+                            this.state = {
+                                name: 'ReactClass'                  //Al cargar muestra hello ReactClass
+                            }
+                        }
+
+                        updateName = () => {
+                            this.setState({name:'ReactFunction'} )
+                        }
+
+                        render(){
+                            return(
+                                <div onClick={this.updateName} >
+                                    <Hello name={this.state.name} > // Al hacer click Hello ReactFunction
+                                </div>
+                            )
+                        }
+                    }
+
+                    render(<ClassApp/>, document.getElementById('root'))
+
+
+
+            Ahora simplificando con Hooks:
+
+                    
+                    import React, {Component, useState} from 'react'
+                    import {render} from 'react-dom'
+                    import Hello from './Hello'
+
+                    function FnApp (){
+
+                        const [name, setName] = useState('ReactClass')
+
+                        return(
+                            <div onClick= {()=> setName('ReactFunction') } >
+                                <Hello name= {name} >
+                            </div>
+                        )
+                    }
+
+
+            
+            La estructura basica se usan de la siguiente manera:
+
+                    useState([valorInicial])
+
+                    devuelve un array:
+                        [0] => valor (ref)
+                        [1] => setName (fn)
+
+            Los declaramos con spread syntax para simplificar:
+
+                    import React, *** { Component, useState } *** from 'react'
+
+                    function App (){
+
+                        const *** [name, setName]  = useState('ReactClass') ***
+                    }
+
+                    
+                    - El value es constante
+                    - No puedo hacer name = x
+                    - Se cambia con setName
+                    - setName ('Nuevo valor')
+                    - No llamar setName entre la declaracion del hook y el render
+
+
+            
+            Reglas generales de los hooks:
+
+                    - Deben ejecutarse SIEMPRE
+                    - Esto implica que no pueden ser ejecutados dentro de otras estructuras, como IF, FOR
+                    - Se ejecutan en orden y nunca en simultaneo
+
+
+
+
+La correlacion que hay entre el render, las props, el estado y los eventos.
+
+Para saber que debe renderizar, React busca ciertas condiciones especificas:
+
+            - Cambio en las props <Title text= "newtext" />
+            - Cambio en el estado:
+                    - this.setState( {count:2} )    // class based
+                    - setCount(2)                   // Fn + hooks
+            - Eventos:
+                    - Al ocurrir eventos, programaticamente modificaremos el estado, lo cual detona los dos 
+                    primeros puntos
+
+
+            
+
+
+Contador example:
+
+                import React, {Component, useState} from 'react'
+                import {render} from 'react-dom'
+                import Hello from './Hello'
+
+                function Add() {
+
+                    const [number, setNumber] = useState(0)
+
+                    return(
+                        <div>
+                            <p> {number} </p>
+                            <button type="button" onClick= {
+                                ()=> { setNumber (number + 1) } }> Add one
+                            </button>
+                            <button type="button" onClick= {
+                                ()=>{
+                                    if(number > 0){
+                                        setNumber (number - 1)
+                                    }
+                                }
+                            }> Substract one
+                            </button>
+                        </div>
+                    )
+                }
+
+                export default function App (){
+                    return(
+                        <>
+                            <h1>Hello</h1>
+                            <p> {number} </p>
+                            <Add/>
+                        </>
+                    )
+                }
+
+
+
+- Ciclos de vida
+
+            El ciclo de vida no es mas que una serie de estados por los cuales pasa todo componente a lo largo de
+
+            su existencia
+
+            Esos estados tienen correspondencia en diversos metodos, que podemos implementar para realizar acciones
+
+            cuando se van produciendo
+
+            Es fundamental porque hay determinadas acciones que necesariamente debemos realizar en el momento
+
+            correcto de ese ciclo 
+
+            Conocer estos ciclos nos ayudara a optimizar la aplicacion
+
+
+            Las reglas mas basicas:
+
+                    - No bloquear el rendering con tareas pesadas y sincronicas
+                    - Ejecutar tareas asincronicas con efectos secundarios luego del montaje (mount)
+
+
+            
+            Estados dentro de un ciclo de vida:
+
+                    - Montaje: se produce la primera vez que un componente va a generarse, incluyendose en 
+                            el DOM
+                    
+                    - Actualizacion: se produce cuando el componente ya generado se esta actualizando
+
+                    - Desmontaje: se produce cuando el componente se elimina del DOM 
+
+
+
+            El hijo tendra la posibilidad de cambiar todas las veces que quiera hasta que el componente que 
+
+            lo genero lo destruya 
+
+
+
+            Metodos de ciclos de vida: (class based)
+
+            hoy en dia con componentes funcionales tendremos reemplazos para varios de los lifecycles, mas sabiendo
+
+            que en la version 17.x seran deprecados(obsoletos):
+
+                    - componentWillMount
+                    - componentWillReceiveProps
+                    - componentWillUpdate 
+
+            
+            - componentWillMount() *(obsoleto)* es de tipo montaje, se ejecuta justa antes del primer renderizado 
+            
+            del componente si dentro de este metodo seteas el estado del componente con setState(), el primer 
+            
+            renderizado mostrara ya el dato actualizado y el componente se renderizara solo una vez
+
+
+            - componentDidMount() metodo de montaje, que solo se ejecuta en el lado del cliente
+
+            se produce inmediatamente despues del primer renderizado. Una vez se invoca este metodo ya estan 
+
+            disponibles los elementos asociados al componente en el DOM 
