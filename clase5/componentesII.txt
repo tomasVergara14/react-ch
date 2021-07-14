@@ -346,7 +346,7 @@ Contador example:
 
 
 
-            Metodos de ciclos de vida: (class based)
+            *** Metodos de ciclos de vida: (class based) ***
 
             hoy en dia con componentes funcionales tendremos reemplazos para varios de los lifecycles, mas sabiendo
 
@@ -369,3 +369,126 @@ Contador example:
             se produce inmediatamente despues del primer renderizado. Una vez se invoca este metodo ya estan 
 
             disponibles los elementos asociados al componente en el DOM 
+            
+            Es el metodo adecuado para realizar llamadas Ajax, setIntervals y similares
+
+
+            - componentWillReceiveProps() *(obsoleto) es un metodo de Actualizacion que se invoca cuando las 
+
+            propiedades se van a actualizar, aunque no en el primer renderizado del componente. Se invocara antes
+
+            de inicializar las propiedades por primera vez
+
+            Recibe de propiedad el valor futuro que tendra el objeto  
+
+            El valor anterior es el que esta todavia en el componente, este metodo se invocara antes de que Esos
+
+            cambios se hayan producido
+
+
+            - shouldComponentUpdate(nextProps, nextState) es un metodo de actualizacion y tiene una particularidad,
+
+            y es que debe devolver un booleano. Se invocara cuando se producen cambios de propiedades o cambios de 
+
+            estado.
+
+
+            - componentWillUpdate(nextProps, nextState) *(obsoleto) es un metodo de actualizacion, se invocara antes
+
+            de que el componente vaya a actualizar la vista. Es indicado para tareas de preparacion de esa inminente
+
+            renderizacion causado por una actualizacion de propiedades o estado
+
+
+            - componentDidUpdate(prevProps, prevState) metodo de actualizacion que se ejecuta despues de haberse 
+
+            producido la actualizacion del componente.
+
+            Los cambios ya estan trasladados al DOM del navegador, asi que podriamos operar con el DOM para hacer
+
+            nuevos cambios
+
+            Como parametros recibe el valor anterior de las propiedades y el estado.
+
+
+            - componentWillUnmount() es el unico metodo de desmontado y se ejecuta en el momento que el componente 
+            
+            se va a retirar del DOM.
+            
+            Es un metodo importante, poruqe es el momento en el que se debe realizar una limpieza de cualquier 
+            
+            cosa que tuviese el componente y que no deba seguir existiendo cuando se retire de la pagina
+
+
+
+
+            *** Metodos de ciclos de vida: HOOKS (function based) ***
+
+
+            El hook de efecto sirve para:
+
+                    - controlar el ciclo de vida
+                    - mutaciones(props, estado)
+
+            ex:
+
+
+                    import React, {Component, useState, useEffect} from 'react'
+                    import {render} from 'react-dom'
+                    import Hello from './Hello'
+
+                    function App() {
+                        
+                        const [name, setName] = useState('ReactClass')
+
+                        useEffect( ()=>{
+                            console.log('App mounted')                          //se renderiza SEGUNDO
+
+                            return ()=>{
+                                console.log('Will unmount')
+                            }
+                        }, [] )                                                 // ESTAS LLAVES SE NECESITAN
+
+                        console.log('Will render')                              //se renderiza PRIMERO
+
+                        return(
+                            <div onClick={ ()=> setName('ReactFunction') } >
+                                <Hello name={name} />
+                            </div>
+                        )
+                    }
+
+
+
+            Si queremos reemplazar el lifecycle componentDidMount() podemos utilizar el hooj de efecto 
+
+            con el mismo resultado [] => On mount
+
+
+
+
+            - useEffect:  variantes/filtros
+
+                    [] => On mount
+                    [prop] => On mount y por cada cambio de prop
+                    [prop1, prop2] => On mount y en cada cambio de prop1 o prop2
+                    undefinded => useEffect( ()=>{} ) => Mount y en cada render
+
+
+            
+            Cheatsheet:
+
+                    si declaro:
+
+                    - useEffect(()=>{//Accion, return cleanup-fn} ) - Si mi accion se ejecuta en el montado
+                                                                    y en cada render, mi limpieza se 
+                                                                    ejecuta en cada render
+
+                    
+                    - useEffect(()=>{return cleanup-fn},[] ) - Si mi accion se realiza al montar, la limpieza   
+                                                             sera unicamente al desmontar el componente
+
+                    
+                    - useEffect(()=>{return cleanup-fn},[prop] ) - Si mi accion se realizara al montar, y antes
+                                                                 del proximo cambio de prop se hara una limpieza 
+                                                                 y recien ahi se ejecutara la accion
