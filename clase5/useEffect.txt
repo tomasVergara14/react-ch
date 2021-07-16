@@ -1,0 +1,28 @@
+
+    useEffect Hook
+
+
+En los functions based components no tenemos los estados de los classed based components. Si queremos un side
+
+effect cuando nuestro codigo cambie tenemos que usar los hooks
+
+ex:
+
+        useEffect(()=>{
+
+        } )
+
+esta es la forma mas comun, lo pasamos como una funcion y se ejecuta cuando nuestra app se renderiza.
+
+muchas veces querras usarlo solo cuando tu componente se monte o cuando se cambie algo en especifico
+
+para hacer eso se utiliza un 2° parametro, que es un array con valores, que cuando cambien se aplica el hook
+
+        useEffect(()=>{
+            console.log('renderizando wacho')
+            }, [nombre del elemento a cambiar] )
+
+
+Si el 2° parametro va vacio [] solo se efectuara el side effect cuando se monte el componente y nunca mas,
+
+seria como un onMount, ya que ese elemento no va a variar de nuevo
