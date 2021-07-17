@@ -1,0 +1,78 @@
+
+        *** Promise ***
+
+Tiene una API que nos permite crear y ejecutar distintas operaciones o conjuntos de operaciones.
+
+Una Promise es un objeto que permite representar y seguir el ciclo de vida de una tarea/operacion (funcion)
+
+
+
+    Estados:
+
+        - PENDING
+        - FULLFILLED -completada
+        - REJECTED - rechazada
+
+
+La sincronicidad o asincronicidad de una promise depende de que tarea le demos. Lo unico que ocurre de manera 
+
+asincronica es la entrega del resultado
+
+
+Se construye de la siguiente manera:
+
+
+    Ex de una promise que es siempre completada
+    
+            const task = new Promise((resolve, reject) =>{
+
+                // tarea sincronica
+                resolve(true)
+            } )
+
+            task.then(result => {
+                
+                console.log(result)
+            })
+
+
+
+
+Si hay un rechazo se captura de otra manera:
+
+    Ex de una promise que es siempre rechazada
+    
+            const task = new Promise((resolve,reject) =>{
+                
+                //tarea sincronica
+                reject('mensaje de error')
+            })
+
+            task.then( result=>{
+                
+                console.log('No es error: ' + result)
+                //si es true devuelve eso   
+            
+            }, err =>{
+                console.log('error: ' + err)
+            
+            }).catch(err=>{
+                
+                console.log('Capturar el error')
+            })
+
+
+
+
+Se usa el .then() para ver el resultado del computo de la tarea, todos los operadores the y catch son 
+
+encadenables: .then() .catch() .then() .then()
+
+
+
+Las funciones callback nunca seran llamadas previo a la terminacion de la ejecucion actual del bucle de
+
+eventos en JS
+
+
+
