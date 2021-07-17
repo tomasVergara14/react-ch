@@ -1,0 +1,87 @@
+
+
+        *** Async ***
+
+async function name ([param[, param[, ... param]]]){
+    statements
+}
+
+
+Cuando se llama una funcion async, esta devuelve un elemento Promise. Cuando la funcion async devuelve un valor,
+
+Promise se resolvera con el valor devuelto. Si la funcion async genera una excepcion o algun valor, Promise se 
+
+rechazara con el valor generado
+
+
+una funcion async puede contener una expresion "await", la cual pausa la ejecucion de la funcion asincrona y 
+
+espera la resolucion de la Promise pasada y a continuacion reaunda la ejecucion de la funcion async y devuelve 
+
+el valor resulto
+
+
+Si quisieramos hacer lo mismo que una promise en una funcion async:
+
+    ex de promise con then(): 
+
+            const url = 'http://jsonplaceholder.typicode.com/todos/1'
+            
+            fetch(url)
+            .the((res)=>{
+                return res.json()
+            })
+            .then((data)=>{
+                console.log(data)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+
+
+    
+    convertirlos en async:
+
+
+            const loadData = async ()=>{
+                
+                const url = 'http://jsonplaceholder.typicode.com/todos/1'
+
+                const res = await fetch(url)
+
+                const data = await res.json()
+
+                console.log(data)
+            }
+
+            loadData()
+            
+
+Y para manejar los errores utilizamos try/catch:
+
+
+
+            const loadData = async ()=>{
+
+                try{
+                        
+                    const url = 'http://jsonplaceholder.typicode.com/todos/1'
+
+                    const res = await fetch(url)
+
+                    const data = await res.json()
+
+                    console.log(data)   
+                }
+                catch{
+                    err=>{
+                        console.log(err)
+                    }
+                }
+                
+            }
+
+            loadData()
+
+
+
