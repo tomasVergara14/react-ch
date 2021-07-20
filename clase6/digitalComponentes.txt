@@ -92,3 +92,83 @@ Las Key son necesarias cuando se renderizan varios elementos del mismo tipo que 
                     </ol>
                 )
             }
+
+
+
+
+
+        *** PropTypes DefaultProps ***
+
+
+Se puede capturar una gran cantidad de errores con verificacion de tipos.
+
+
+Se puede instalar las propTypes.
+
+Los propTypes pertenecen al conjunto de paquets que gestiona NPM
+
+para instalarlo usamos: 
+
+                            npm install --save prop-types       // en consola
+
+
+                            import PropTypes from 'prop-types'  // en el componente donde se quiera implementar
+
+
+Para declara que una propiedad es un tipo especifico de JS 
+
+las opciones:
+
+                    - PropTypes.array
+                    - PropTypes.bool
+                    - PropTypes.func
+                    - PropTypes.number
+                    - PropTypes.object
+                    - PropTypes.string
+                    - PropTypes.symbol
+
+PropTypes exporta un rango de validadores que pueden ser usados para estar seguros que la info recibida sea valida
+
+        ex:
+                            import PropTypes from 'prop-types'
+
+                            function Saludar(props){
+
+                                render(){
+                                    return(
+                                        <h1> Hola, {props.nombre}
+                                        </h1>
+                                    )
+                                }
+                            }
+
+                            Saludar.propTypes = {
+                                nombre: PropTypes.string
+                            }
+
+                            export default Saludar
+
+
+
+
+
+DefaultProps puede ser definido como una propiedad en el propio componente, para establecer las props determinadas
+
+que recibira el mismo
+
+Se utiliza para props no definidas, pero no para props nulos
+
+
+se debe definir una propiedad que se llame defaultProps y se le asigna un objeto literal como valor.
+
+Dentro de ese objeto literal , se hara referencia al nombre de la propiedad y se le asignara el valor por defecto
+
+que queres que la prop tenga
+
+        ex:
+                    function SeteoBoton(props){
+                        //...
+                    } 
+                    SeteoBoton.defaultProps = {
+                        color:'blue'
+                    }

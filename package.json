@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/tomasVergara14/react-ch/issues"
   },
-  "homepage": "https://github.com/tomasVergara14/react-ch#readme"
+  "homepage": "https://github.com/tomasVergara14/react-ch#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
 }
