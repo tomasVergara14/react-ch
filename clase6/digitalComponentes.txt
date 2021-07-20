@@ -1,0 +1,94 @@
+
+
+        *** Componentes II ***
+
+Un componente es un bloque de codigo que permite ser reutilizable
+
+una Props es un componente de React valido porque acepta un solo argumento de objeto "props" (propiedades) con
+
+datos y devuelve un elemento de React
+
+Son componentes funcionales porque son funciones de JS
+
+Nos permite retornar componentes con contenido dinamico de acuerdo al valor de sus propiedades
+
+    ex:
+
+            function Bienvenidos (props){
+
+                return{
+                    <>
+                        <h1>Hola, {props.nombre} </h1>
+                    </>
+                }
+            }
+
+
+Las propiedades de un componente reciben sus respectivos valores cuando el componente es invocado por la app
+
+    ex:
+
+            <Bienvenidos
+            nombre = "Luis Victorio" />
+
+React trata a los componentes que comienzan con minusculas como etiquetas del DOM, pero los que comienzan con 
+
+mayusculas los toma como que representan un componente del DOM 
+
+
+
+
+
+        *** Key, Props, Map() ***
+
+Podemos pasar informacion de un array, colocando el atributo entre llaves, nos permiten escribir datos que no sean
+
+simplemente cadenas de texto
+
+    ex: 
+            const usuarios = ["tomi", "tortu", "chico"]
+
+            <MiLista
+            items= {usuarios} />
+
+
+Aca se esta pasando al componente MiLista, los usuarios que se encuentran en el array usuarios y los mismos son 
+
+asignados a la variable items
+
+
+
+Lo primero es recibir dentro, del componente, las props. En la estructura JSX, luego se va a poder iterar sobre el
+
+array recibido para imprimir el usuario.
+
+    ex:
+            function MiLista(props){
+
+                return(
+                    <ol>
+                        {items.map( item=> <li> {item} </li>)}
+                    </ol>
+                )
+            }
+
+Conviene utilizar el metodo map() para iterar sobre el array e imprimir su contenido
+
+Siempre es recomendable utilizar las "key" en el metodo map()
+
+ayudan a react a identificar que elementos han cambiado, agregado o eliminado.
+
+La key debe ser unica entre elementos hermanos, no se muestran por HTML 
+
+
+Las Key son necesarias cuando se renderizan varios elementos del mismo tipo que necesitan de un valor unico
+
+    ex:
+            function MiLista(props){
+
+                return(
+                    <ol>
+                        {items.map( (item, i)=> <li key={u + i} > {item } </li>)}
+                    </ol>
+                )
+            }

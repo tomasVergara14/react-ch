@@ -85,3 +85,25 @@ Y para manejar los errores utilizamos try/catch:
 
 
 
+
+        *** setTimeOut() ***
+
+
+es una funcion en JS que acepta dos 2 argumentos
+
+El primero es otra funcion 
+
+El segundo argumento es el tiempo en milisegundos que deseamos, 1000 = 1 segundo
+
+
+        console.log('a ver')
+
+        const time = setTimeout(()=>{
+
+                console.log('ya era hora, esto es tercero')
+            
+            },3000)
+        
+        //console.log(time)
+        
+        console.log('esto es segundo')
