@@ -1,0 +1,113 @@
+
+
+        *** HTTP ***
+
+
+
+Es un protocolo de transferencia que permite de manera estandarizada la comunicacion entre el cliente y el 
+
+servidor
+
+
+
+        *** REST ***
+
+
+Es un tipo de arquitectura de servicios que proporciona estandares entre sistemas informaticos para establecer 
+
+como se van a comunicar entre si.
+
+arquitectura de servicios que estandariza como se comunican los sistemas informaticos
+
+
+
+        *** Cliente - Servidor ***
+
+
+Es uno de los estandares REST
+
+Indica que la aplicacion del cliente y la aplicacion del servidor deben poder desarrollarse, extenderse, 
+
+cambiarse, sin interferir una con la otra
+
+El cliente nunca deberia enterarse que se cambio algo del servidor y el servidor no deberia tener inconvenientes
+
+con los cambios que realice el cliente 
+
+
+
+        *** Recursos Uniformes ***
+
+Un recurso en el sistema deberia tener solamente un identificador logico, y este proveer acceso a toda la info
+
+relacionada.
+
+ex:
+        "/productos"    - "/productos/crear"
+                        - "/productos/editar"
+                        - "/productos/eliminar"
+
+
+
+        
+        
+        *** Stateless ***
+
+REST propone que todas las interacciones entre cliente/servidor deben ser tratadas como nuevas y de forma 
+
+absolutamente indepenientes
+
+Se debe mandar toda la info de autenticacion necesaria en cada peticion
+
+Esto permite desarrollar aplicaciones mas confiables, performantes y escalables
+
+
+
+
+
+        *** Cacheables ***
+
+Rest propone que el cacheo de datos es una herramienta muy importante
+
+se implementa del lado del cliente, para mejorar la performance y reducir la demanda al servidor
+
+Se utiliza para guardar info que no suele cambiar usualmente, en el equipo del cliente. Esto mejora el rendimiento
+
+y reduce las peticiones al servidor
+
+
+
+
+
+
+        *** Formato de envio de datos ***
+
+
+- JSON:
+        Es el mas comun, cuando queremos enviar datos en formato JSON debemos agregar en el encabezado en los
+
+        headers:        "Content-Type":"application/json"
+
+
+- RAW: 
+        Para mandar datos con tezto sin ningun formato en particular, no se usa tanto
+
+
+- TEXT:
+        Para enviar datos que no sean en formato JSON como archivos html, css
+
+
+- URL-encoded:
+        Para enviar datos codificados en forma de URL, similar a un query string.
+
+
+
+
+
+        *** Metodo HEAD ***
+
+Es un metodo HTTP que permite conocer la fecha de la ultima modificacion de un recurso
+
+Se utiliza con el metodo GET, que si la fecha de modificacion no coincide con la del recurso que el cliente tiene
+
+cacheada localmente, se pueden pedir los datos para actualizarlos
