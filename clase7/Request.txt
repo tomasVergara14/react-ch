@@ -1,0 +1,33 @@
+        *** Request via HTTP ***
+
+    
+Para ayudarnos a realizar una solicitud a un servidor y nos permiten establecer un protocolo de transferencia
+
+definido por:
+
+        - Direccion/ URL
+        - Verbo (GET, POST, PUT, PATCH, DELETE)
+        - Headers
+        - Body (contenido en un POST)
+
+
+
+        *** URL y VERB ***
+
+
+Nos permite definir una manera de explicarle al servidor la direccion y nuestras intenciones
+
+        - GET: Quiero obtener
+                                /pet/{petId}                Find pet by Id
+
+        - POST: Quiero crear
+                                /pet/{petId}/uploadImage    upload an Image
+
+        - PUT: Quiero crear o actualizar
+                                /pet                        Update an existing pet
+
+        - PATCH: Quiero alterar parcialmente
+                                
+
+        - DELETE: Quiero eliminar
+                                /pet/{petId}                Delete a pet

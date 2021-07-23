@@ -1,0 +1,54 @@
+
+
+        *** Consumiendo API´s REST ***  
+
+
+La  mayoria de las app suelen generar experiencias de usuario gracias a que se pueden conectar a un conjunto de
+
+servicios de datos
+
+A un usuario de Ig acceder a su perfil y ver sus fotos, a un usuario de Tw publicar un tweet trasmitiendo tantos
+
+caracteres por mensaje
+
+
+Las mejoras tecnologicas permitieron saltos en el terreno de apps:
+
+        - Velocidad de transferencia
+        - Tolerancia a fallos
+        - Seguridad
+
+
+
+        *** Modelo Cliente-Servidor ***
+
+
+Hay dos protagonistas:
+
+        - Cliente (consumidor)
+        - Servidor (proveedor)
+
+Este modelo estableces que los distintos consumidores se identifican entre ellos y acuerdan una manera de 
+
+transferir la informacion
+
+
+El orden y sincronizacion de la operacion:
+
+        1- El cliente solicita informacion
+        2- El servidor envia la respuesta
+        3- Fin de la comunicacion
+
+
+Si se invierte la logica se conoce como PUSH 
+
+        1- El Cliente se suscribe
+        2- El servidor elige el momento del inicio de la transferencia y la envia a un servicio
+        3- El servicio se la provee al Cliente
+
+
+        *** PUSH ***
+
+Nace para poder generar engagement y lograr que los usuarios recuerden que nuestra app existe y que puede 
+
+proveerles con algo que les puede interesar, en el momento que el servidor considere oportuno

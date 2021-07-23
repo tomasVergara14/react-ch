@@ -1,0 +1,104 @@
+        *** Query Params ***
+
+
+Nos permite incluir en la direccion info que se usa para especificarle al receptor parametros para efectuar en la
+
+busqueda, son mas comunes para buscar recursos que no tengo la seguridad de que existan
+
+Ex:
+        'https://www.google.com.ar/search?q=coder+house'
+
+
+Lo importante en esa linea es el "?q"
+
+Esto se puede leer como:
+
+            - Busca en google.com.ar
+            - Utilizando https 
+            - El recurso search (resultado de busqueda)
+            - Que contenga la palabra (q=query) 'coder house'
+
+
+Se separa la URL de los parametros Utilizando el signod e pregunta "?"
+
+Cada parametro tendra key=value & key2=value2
+
+Cada parametro se separa por "&"
+
+
+
+
+        *** URL Params ***
+
+
+Son una convencion para incluir el identificador del recurso dentro de la misma url
+
+Son mas comunes cuando ya se conoce el recurso especifico que se buscara
+
+ex:
+        ´http://myapp.coder/student/1234´
+
+Se puede leer como:
+
+        - Busca en myapp.coder 
+        - Utilizando https
+        - El recurso student 
+        - Con un id 1234
+
+
+ex:
+        'http://myapp.coder/student/1234/courses´'
+
+Se puede leer como:
+
+        - Busca en myapp.coder
+        - Utilizando https
+        - El recurso courses
+        - Unicamente para student 1234
+
+
+
+
+        *** Recursos / RESTful ***
+
+
+Cuando se crea y provee un servicio basado y pensado en terminos de recursos y se respetan las convenciones de
+
+verbo/metodo y codigo de respuesta, estamos frente a un diseño arquitectural de tipo REST
+
+Si ademas transferimos JS o XML, es conocido como AJAX
+
+
+
+
+
+        *** BODY ***
+
+Se utiliza para transferir piezas de informacion entre cliente y el servidor
+
+ex:
+
+        POST/ create-user HTTP/1.1
+
+        Host: localhost:3000                    //      HEADER
+        Connection: keep-alive                  //      HEADER
+        Content-type: application/json          //      HEADER
+
+        {"name":"Jhon", "age":35}               //      BODY
+
+
+
+
+        *** HEADERS ***
+
+Se usan para:
+
+        - Definir las respuestas soportadas, requeridas o preferidas
+        - Agregar informacion extra {
+                - cookies
+                - lenguaje preferido
+                - si acepta cache
+        }
+        - Lo que quieras en forma de texto
+
+Se puede leer desde la consola de Chrome
