@@ -1,0 +1,74 @@
+
+
+        *** Organicemos nuestra APP ***
+
+
+La facilidad con la que nuestra app permite agregar funcionalidades y navegarlas es un factor clave en terminos de
+
+experiencia y escalabilidad
+
+
+Buena navegabilidad permite:
+
+        - Users: entender donde estan parados y guardar favs/marcadores a secciones en las que tiene interes
+        - Navegadores: Permitir controlar las acciones de ir adelante y volver, y conocer el nav history
+        - Crawlers: Entender la estructura de la app y proveer acceso optimizado/visibilizado a distintas secciones
+
+
+
+Preguntarse:
+
+        ¿Cual es el punto de inicio de nuestra app?
+
+        - Organizacion:
+
+                        - Inicio
+                        - Busqueda
+                        - Detalle
+                        - Confirmacion
+                        - Fin
+
+
+        - Routing:
+                        - Inicio            
+                                        Home            '/'
+
+                        - Busqueda      
+                                        ItemList        '/'
+                                        ItemList+cat    '/category/:id'
+
+                        - Detalle
+                                        ItemDetail      '/itemDetail/:id'
+
+                        - Confirmacion
+                                        Cart            '/cart'
+
+                        - Fin
+                                        Checkout        '/checkout'
+
+
+
+
+
+
+        *** React Router ***
+
+
+Se debe instalar ya que no viene integrado con React, para mantener las dependencias al minimo y dado que no todo
+
+proyecto necesita routing, se debe instalar con:
+
+        - npm install react-router-dom
+
+
+
+Para configurarlo se lo importa en app desde "react-router-dom" :
+
+        *App.js
+
+        import React from 'react';
+        import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+
+
+Para agregar la funcionalidad a toda la aplicacion
