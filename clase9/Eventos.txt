@@ -1,0 +1,153 @@
+
+        *** Eventos ***
+
+Es un estimulo programatico que puede ser provocado de manera automatica o ser el resultado de una interaccion 
+
+del usuario con la UI 
+
+
+tipos:
+
+        -Eventos automaticos:
+                            Si estamos viendo netflix por mucho tiempo sin tocar el control remoto ocurre un 
+                            
+                            evento automatico por inactividad que nos pregunta si continuamos ahi
+        
+        -Eventos manuales:
+                            Son todas las interacciones del usuario que producen algun tipo de respuesta o efecto
+
+                            secundario (llenar un formulario o apretar un boton)
+
+
+
+
+        *** Dom Events ***
+
+
+El DOM tiene una serie de eventos satndar y se dividen en varias categorias:
+
+    - Dispositivo/accion:
+                        mouse, input, keyboard, wheel, focus, etc 
+
+    - Custom events:
+                        Es posible definir eventos propios que disparen la informacion que queramos
+
+
+
+
+
+El evento de UI mas conocido es el click    
+
+ex:
+        retunr(
+            <div>
+                <button onClick={input} >Button</button>
+                <p>Pressed?</p>
+            </div>
+        )
+
+
+Tambien es muy utilizado el scroll via un wheel event
+
+
+
+
+        *** Event Listener ***
+
+
+Es un patron de diseño que sirve para escuchas cuando un algo ocurre en algun elemento, libreria o API, y poder
+
+realizar una accion en consecuencia
+
+
+    * Para configurarlo *
+
+        window.addEventListener('resize', onResize)
+
+
+El 'resize' es el nombre de evento que quiero escuchar y el onResize es una referencia de la funcion a registrar
+
+Se guarda la referencia para poder removerlo despues
+
+
+
+    * Para removerlo *
+
+        return()=>{
+            console.log('On dismount')
+            window.removeEventListener(onResize)
+        }
+
+Invocar el removeEventListener en la funcion de limpieza de nuestos hooks en donde la hayamos registrado
+
+
+
+    - Se des-registran con el nombre y la referencia a la funcion con que los regstramos
+
+    - Si registras manualmente un evento del DOM en tu componente de react hazlo dentro de un effect y asegurate
+
+    de de-registrarlo en la funcion de limpieza en el return del efecto 
+
+    - Recordemos que si dejamos un event listeners sin des-registrar corremos riesgos de crear leaks de memoria
+
+    o regstrar un evento mas de una vez (se ejecutara una vez por cada register)
+
+
+
+
+            *** Declarando un Evento ***
+
+
+Si necesito almacenar el valor del evento puedo guardarlo en un estado:
+
+ex:
+
+    import React from 'react'
+    import './style.css'
+
+    export default function App(){
+
+        function onClick(event){
+            
+            console.log("Clicked")          // Al terminar esta funcion el event se destruye
+
+        }
+        return(
+            <div>   
+                <button onClick={onClick} > Click me </button>
+            </div>
+        )
+    }
+
+
+
+Precaucion, si necesito almacenar el valor del evento puedo guardarlo en un estado o llamar a event.persist() 
+
+pero no suele ser conveniente y/o necesario
+
+ex:
+
+    import React from 'react'
+    import './style.css'
+
+    export default function App(){
+
+        function onInput(event){
+
+            console.log(`Event is: ${event.target.value} `)
+
+            setTimeout(()=>{
+
+                console.log(`Event is destroyed: ${event.target.value} `)   //al terminar el event se destruye
+
+            },1000)
+        }
+        return(
+            <div>
+                <label>Coder name</label>
+                <input onInput={onInput}></input>
+            </div>
+        )
+    }
+
+    
