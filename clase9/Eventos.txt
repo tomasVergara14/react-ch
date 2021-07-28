@@ -150,4 +150,53 @@ ex:
         )
     }
 
-    
+
+
+        *** Cancelando el Evento ***
+
+Algunos eventos como onKeyDown son cancelables, event.preventDefault() , por ex:
+
+   
+    export default function App(){
+
+        function onInput(event){
+
+            event.preventDefault()
+        }
+        return(
+
+            <div>
+                <label>Coder name</label>
+                <input onKeyDown={onInput} ></input>
+            </div>
+        )
+    }
+
+
+
+
+
+        *** Evitando la propagacion ***
+
+
+Los eventos por default se ejecutan en el elemento y en cada uno de sus ancestros. Si esto puede traer algun 
+
+efecto secundario podemos cancelar la propagacion (bubbling) event.stopPropagation(), por ex:
+
+
+    export default function App(){
+
+        function onClick(event){
+
+            event.stopPropagation()
+        }
+        return(
+
+            <div>
+                <label>Coder name</label>
+                <input onClick={onClick} ></input>
+            </div>
+        )
+    }
+
+        
