@@ -1,0 +1,80 @@
+
+        *** Navegar una ruta ***
+
+
+Una vez configurado todo, podemos importar un link perteneciente a react-router-dom en cualquier componente del
+
+sub-arbol del <BrowserRouter>
+
+
+ex: 
+
+        import React from 'react'
+        import { Link } from 'react-router-dom'
+
+
+Y usarlo para que al clickear el BrowserRouter renderice ese Route que habiamos declarado dentro del Switch
+
+ex:
+        <li> <Link to={'/cart'} > Carrito </Link> </li>
+
+
+
+
+
+        *** Navegar a una ruta con Parametros ***
+
+
+Si hacemos la ruta dinamica (con parametros)
+
+ex:
+        <Route exact path="/categories/:categoryId" >
+            <Home />
+        </Route>
+
+Se puede navegar identicamente pero de manera dinamica
+
+
+
+
+        *** Navegar a una ruta -NavLink ***
+
+Cambiando el Link por NavLink, es un Link pero con un estilo, esta siempre detectando la ruta actual, y si 
+
+coincide con la suya nos activa la clase que le demos para que el user sepa que item de la lista corresponde con
+
+la vista actual
+
+ex:
+        <li> <NavLink to={'/categories/${cat.id}'} activeClassName="currentCategory" className="text-white"> {cat.name} </NavLink> </li>
+
+
+
+
+
+
+        *** Recibir parametros por ruta ***
+
+
+React router provee integracion Hooks 
+
+    useParams:
+
+        - Lo podemos utilizar para leer en js los parametros de la ruta 
+
+        - En combinacion con un useEffect nos sirve para obtener actualizaciones sobre los parametros
+
+ex:
+
+        function ComponentWithRouteParams(){
+
+            const {userId} = useParams();
+
+            useEffect( ()=>{
+
+                console.log('received userId to: ' , userId )
+                return ()=>{
+                    console.log('Will change userId: ', userId)
+                }
+            }, [userId] )
+        }

@@ -71,4 +71,39 @@ Para configurarlo se lo importa en app desde "react-router-dom" :
 
 
 
-Para agregar la funcionalidad a toda la aplicacion
+Para agregar la funcionalidad a toda la aplicacion lo importamos en el App 
+
+y debemos configurar:
+
+                - Wrappear (envolver) la aplicacion en un BrowserRouter
+
+                - Crear un Switch (donde proyectaremos las vistas navegadas)
+
+                - Crear los Route´s de las distintas navegaciones con sus componentes asociados
+
+ex:
+                function App(){
+                        
+                        return(
+                                <BrowserRouter>
+                                        <NavBar categories={categories} />
+                                        <Switch>
+                                                <Route exact path="/" >
+                                                        <Home/>
+                                                </Route>
+                                                <Route exact path="/cart" >
+                                                        <Cart/>
+                                                </Route>
+                                        </Switch>
+                                </BrowserRouter>
+                        )
+                }
+                export default App
+
+
+
+Especifidad de match, por defecto se matchean (coinciden) unicamente partes de la url, por lo tanto '/' va a
+
+matchear con '/cart' o '/checkout', por eso debemos usar la propiedad exact
+
+
