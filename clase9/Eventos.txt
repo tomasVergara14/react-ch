@@ -199,4 +199,52 @@ efecto secundario podemos cancelar la propagacion (bubbling) event.stopPropagati
         )
     }
 
+
+
+
+        *** Simetria unidireccional *** 
+
+
+
+    Reaccion:   Bajan los datos
+
+    Accion:     Suben los eventos
+
+
+
+        *** Intercambiabilidad / comportamiento agnostico ***
+
+
+Intercambiabilidad:
+
+            Implementando componentes de manera eficiente podremos generar intercambiabilidad e intercambiar 
+
+            funcionalidades sin mucho esfuerzo
         
+            Podemos generar variaciones del mismo componente con distinto layout y el mismo comportamiento
+
+            ex:
+                
+                const InputCount = (onConfirm, maxQuantify)=>{};
+                const ButtonCount = (onConfirm, maxQuantify)=>{};
+
+                export default function ItemDetail({item, inputType = 'input'}){
+
+                    const Count = inputType === 'button' ? ButtonCount : InputCount;
+                    const itemMax = item.max
+                    const min = item.min 
+
+                    function addToCart(quantify){
+
+                        if(item.inStock){
+                            console.log(`Agregar al cart el item:${item.id} con cantidad: ${quantity} `)
+                        }
+                    }
+
+                    return(
+                        <div>
+                            <label>Item description</label>
+                            <Count onConfirm={addToCart} maxQuantify={item.max} ></Count>
+                        </div>
+                    )
+                }
