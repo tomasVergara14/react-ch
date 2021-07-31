@@ -106,3 +106,109 @@ ex:
 
 
 Si no se le setea el value se usara el valor que se le dio en la creacion
+
+
+
+                *** Consumiendo un Contexto ***
+
+
+Utilizando el useContext(ThemeContext) nos devolvera el calue del <x.Provider value ={} >
+
+ex:
+        import React, {useContext} from 'react'
+
+        const ThemeContext = React.createContext()
+
+        function ComponentA2(){
+
+                const isDarkMode = useContext(ThemeContext)
+                return(
+                        <p> Darkmode: {isDarkMode} </p>
+                )
+        }
+
+
+Utilizando un consumer podermos lograr un efecto similar y si el value cambia React hara el re-render cuando cambie
+
+el value del provider 
+
+ex:
+        import React, {useContext} from 'react'
+
+        const ThemeContext = React.createContext(false)
+
+        function ComponentA2(){
+
+                return(
+                        <ThemeContext.consumer>
+                                {(isDarkMode)=> (<p> Darkmode: {isDarkMode} </p>) }
+                        </ThemeContext.consumer>
+                )
+        }
+
+Estos consumers son comodos cuando no necesitamos el estado en el componente consumidor (ComponentA2) para lograr
+
+otro efecto secundario
+
+
+
+
+                *** Recap Context ***
+
+
+- Permiten compartir un valor unico cross-App
+
+- Reducen el wrapper-hell
+
+- No solo pueden llevar values, sino cualquier tipo de fn, obj o referencia
+
+- Toman el valor del provider mas cercano o el definido durante su declaracion
+
+
+
+
+                *** Contexto Dinamico ***
+
+
+Los contextos tambien pueden ser alterados en tiempo de ejecucion y sus efectos propagados al resto de los 
+
+consumidores
+
+
+Lo importante es:
+
+        - Saber elegir cual es el punto estrategico de mi aplicacion donde iniciare el estado de ese context (App)
+
+        - Combinarlo estrategicamente con un useState para poder mutarlo y que el useState me ayude a hacer 
+
+        trigger de renderings de consumers
+
+
+
+
+                *** Tips ***
+
+
+- Puedo tener multiples contextos del mismo corriendo en una aplicacion
+
+- El valor previsto por el hook de contexto sera el del parent provider mas proximo del arbol a mi componente
+
+- Mas que con redux, una gran cantidad de casos de uso podemos lograrlos solo conociendo bien react, context, 
+
+hooks y patrones
+
+
+
+
+                *** Custom Provider ***
+
+
+        Contexto dinamico
+
+Si bien podriamos declarar un provider simplemente haciendo lo siguiente:
+
+ex:
+        <CacheContext.Provider value={{cache: [] }} >
+                <CompA/>
+                <CompB/>
+        </CacheContext.Provider>
