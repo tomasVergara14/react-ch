@@ -1,3 +1,108 @@
 
         *** Context ***
 
+En React el flujo de datos es unidireccional, la unica manera de trasmitir datos es via props
+
+Si quisiera llevar una variable desde el punto mas alto a mi punta de uso, me veria en algo parecido a lo 
+
+siguiente 
+
+
+                function ComponentA2 ({ isDarkMode }){
+
+                        return (
+                                <p>Darkmode: {isDarkMode} </p>
+                        )
+                }
+
+                function ComponentA1 ({ isDarkMode }){
+
+                        return(
+                                <ComponentA2 isDarkMode={isDarkMode} ></ComponentA2>
+                        )
+                }
+
+                function App (){
+                        
+                        const [isDarkMode, setDarkMode]= useState(true)
+                        return(
+                                <ComponentA1 isDarkMode={ isDarkMode } ></ComponentA1>
+                        )
+                }
+
+
+O sea es necesario pasar la prop 'isDarkMode' por cada componente hasta llegar al requerido, y este caso son solo
+
+3 nestings
+
+
+Declarando un contexto podemos sacar todos los pasamanos intermedios 
+
+Sabiendo del tipo de variable, que deberia ser global
+
+ex:
+
+                const ThemeContext = React.createContext()
+
+                function ComponentA2(){
+
+                        const isDarkMode = useContext(ThemeContext)
+                        return(
+                                <p>Darkmode: {isDarkMode} </p>
+                        )
+                }
+
+                function ComponentA1(){
+                        return(
+                                <ComponentA2/>
+                        )
+                }
+
+                function App(){
+                        
+                        const [isDarkMode, setDarkMode] = useState(true)
+                        return(
+                                <ThemeContext.Provider value={ isDarkMode } >
+                                        <ComponentA1/>
+                                </ThemeContext.Provider>
+                        )
+                }
+
+
+
+
+                *** Declarando Context ***
+
+
+Es simple:
+
+        const ThemeContext = React.createContext()
+
+
+
+Y se le puede dar un valor default:
+
+        const ThemeContext = React.createContext(false)
+
+
+
+
+                *** Context Provider ***
+
+
+Tengo que envolver el nodo de React al que quiero que este provider propague hacia sus children
+
+ex:
+        
+        function App(){
+
+                const [isDarkMode, setDarkMode] = useState(true)
+                return(
+                        <ThemeContext.Provider value={isDarkMode} >
+                                <ComponentA1/>
+                        </ThemeContext.Provider>
+                )
+        }
+
+
+Si no se le setea el value se usara el valor que se le dio en la creacion
