@@ -186,3 +186,52 @@ ex:
                         </>
                 )
         }
+
+
+
+
+        * Conditional attributes: classes *
+
+
+
+ex:
+        function TextComponent({ condition, other }){
+
+                return(
+                        <>
+                                <h2 className={ `${condition === true ? 'redClass' : 'greencClass'} ${other || ''} ` } > Loading... </h2>
+                        </>
+                )
+        }
+
+        export default function App(){
+                
+                return <TextComponent condition={true} other='newClass' />
+        }
+
+
+
+
+
+                *** Render Optimization ***
+
+
+
+En cada cambio React hace rendering top-down desde el lugar donde se produjo el cambio de estado de manera
+
+recursiva hacia las hojas
+
+Muchas veces sabemos que en realidad nada deberia cambiar en algunos componentes montados.
+
+Los sources de cambio son props & state
+
+
+O sea podemos salvarle ese trabajo a React si:
+
+        - El componente es puro
+        
+        - Tenemos certeza de que las mismas props producen siempre el mismo render 
+        
+        - Sabemos que es muy caro realizar una lista larga, compleja, etc
+
+        
