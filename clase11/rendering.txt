@@ -1,0 +1,188 @@
+
+        *** Tecnicas de Rendering ***
+
+
+Principios basicos de React
+
+React trabaja con un flujo de reconciliacion y entiende bastante acerca de donde y como ocurren los cambios de 
+
+nuestra app
+
+Mantiene una version en virtual de la misma y recordamos eso como el virtual DOM
+
+
+React nos ayuda a escuchar eventos, nos sigue dejando a nuestro cargo la sincronizacion con nuestro estado
+
+ex:
+        const ControllerInput = ()=>{
+            
+            const [input, setInput] = useState('')
+
+            return <input type="text"
+                    value={value} 
+                    onInput={(evt)=>setInput(evt.target.value) } />
+        
+        }       //en cada nuevo render causado por setInput reescribira un input con el nuevo value
+
+
+
+        
+        *** Rendering condicional ***
+
+
+En ciclos de render puedo decidir que quiero hacer rendering de solo algunos nodos de un arbol o de otro 
+
+ex:
+        function LoadingComponent(){
+
+                const [loading, setLoading] = useState(true)
+
+                useEffect(()=>{
+
+                        setTimeout(()=>{
+
+                                setLoading(false)
+                        },10000)
+                },[])
+
+                return
+                        <>
+                                {loading ? <h2> Loading </h2>} : <h3> Loaded! </h3>
+                        </>
+                
+        }
+
+        export default function App(){
+                
+                return <LoadingComponent/>
+        }
+
+
+
+El rendering condicional:
+
+        - Sirve para aparecer y desaparecer nodos del render
+        
+        - Estos eventos provocan dismounting y todos los efectos que ello conlleva
+
+        - Se llamara al efecto de desmontaje y podremos detectarlo
+
+        - Podemos usar los cleanup effects para detectar algun dismounting si no sabemos con certeza si ocurre 
+
+        - A veces se producen sin la intencion y causan bugs o perdida no intencionada del estado, dando 
+        inestabilidad
+
+
+
+                *** Tecnicas de Rendering ***
+
+
+
+        #1: IF con return temprano
+
+React renderiza el resultado del return de nuestra funcion y cada return se transforma en nuestro nuevo arbol de 
+
+partida para proximos
+
+ex:
+        function TextComponent({condition}){
+
+                if(condition === true){
+
+                        return <h2> condition is true </h2>
+                }
+                
+                return <h2> condition is false </h2>
+        }
+
+
+
+En forma vanilla antes de ser transpilado seria:
+
+        - return React.createElement("h2", null, "condition is true")
+
+        - return React.createElement("h2", null, "condition is false")
+
+
+
+
+
+        #2: Inline con Fragment
+
+
+Tenemos un nodo base (fragment) y decidimos inline con "condition &&"
+
+ex:
+        function TextComponent({condition}){
+
+                return(
+                        <>
+                                {condition && <h2> Condition is true </h2>}
+                                {!condition && <h2> Condition is false </h2>}
+                        </>
+                )
+        }
+
+
+
+
+
+        #3: Inline Ternary
+
+
+Mantenemos el mismo nodo como padre y modificamos sus children, que en este caso son los textos, lo cual optimiza
+
+ya que no hay dismounts
+
+ex:     
+        function TextComponent({condition}){
+
+                return <h2> {condition ==true ? 'Condition is true' : 'Condition is false' } </h2>
+        }
+
+
+En este ejemplo solo crea un solo createElement
+
+
+
+
+                *** Otras tecnicas ***
+
+
+
+        *Conditional props: Styling*
+
+
+El conditional rendering aplica no solo para los nodos, sino tambien para sus propiedades
+
+ex:
+        function TextComponent({ condition }){
+
+                return(
+                        <>
+                                <h2 style={ { color:!contion ? 'red' : 'green' } }> Loading... </h2>
+                        </>
+                )
+                export default function App(){
+                        
+                        return <TextComponent condition={true}>
+                }
+        }
+
+
+
+
+        * Conditional attributes: classes *
+
+
+Modificar clases  en base a condiciones
+
+ex:
+        function TextComponent({ condition }){
+
+                return(
+                        <>
+                                <h2 className={ condition === true ? 'greencClass' : 'redClass' } > Loading... </h2>
+                        </>
+                )
+        }

@@ -36,6 +36,8 @@ O sea es necesario pasar la prop 'isDarkMode' por cada componente hasta llegar a
 3 nestings
 
 
+
+
 Declarando un contexto podemos sacar todos los pasamanos intermedios 
 
 Sabiendo del tipo de variable, que deberia ser global
