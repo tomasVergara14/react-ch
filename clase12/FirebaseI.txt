@@ -1,0 +1,375 @@
+
+        *** Firebase ***
+
+
+
+    * WHYW *
+
+WHYW:
+        What? Hell Yeah! What? El proceso clasico de explorar nuevas tecnologias
+
+        What:   
+                Sorpresa, intriga ¿Como hace eso?
+
+        Hell Yeah: 
+                Nuestra emocion cuando nos responden esa pregunta solo con los beneficios infinitos y lo simple
+
+        de adoptarla
+
+        What: 
+                Cuando empezamos a usarla, se comporta magicamente y realmente no sabemos que estamos haciendo
+
+
+    
+
+    * Arquitectura *
+
+
+Si venimos de los desarrollos clasicos tenemos una arquitectura que es la mas conocida
+
+
+                           consume                      para llegar a 
+
+                 *SPA        =>             API              =>                Base de datos
+
+    corre en el           provista por el               Accede y guarda via    
+
+                 Browser     =>             Backend          =>                SQL, noSQL    
+
+
+
+
+
+Hoy las tecnologias nos permiten rearmar este esquema para que todos los desarrollos no necesariamente requieran
+
+este patron
+
+firebase services nos permite decidir quien accede mediante mecanismos propios y filtros de seguridad
+
+
+
+
+        *** Firebase ***
+
+
+Es un servicio provisto por Google para satisfacer las distintas necesidades que puede tener una aplicacion y su 
+
+ciclo de desarrollo dentro de las cuales encontramos:
+
+    - Seguridad y autenticacion
+    - Almacenamiento y consulta
+    - Hosting
+    - Monitoreo
+    - Functions y mas
+
+
+
+
+
+        *** Creando un proyecto de Firebase ***
+
+
+
+Accediendo a firebase: registracion
+
+Se necesita una cuenta de Google o Gmail, si no la tienes ve ahora y registrate es muy sencillo
+
+
+    1- Ingresar a la cuenta de Google
+
+    2- Una vez logueada ingresar a la consola en la esquina superior derecha
+
+    3- Alli veremos todos nuestros proyectos de firebase, si no tenemos creamos uno como punto de partida para 
+    nuestro e-commerce
+
+    4- Para crear un proyecto, en este paso podemos indicarle con que nombre queremos conocer este proyecto, 
+    utiliza un nombre significativo para diferenciarlo de otros
+
+    5- ex: coderhouse-coffeshop
+
+    6- A no ser que ya seas user y conozcas analytics omite el paso 2 por simpleza 
+
+
+
+
+
+    * Panel de control *
+
+
+
+Accediendo a firebase: overview
+
+Ahora en el panel podemos observar que estamos consumiendo el "Plan Spark" (tier gratuito)
+
+El panel te permitira configurar otras funcionalidades extra muy interesantes
+
+
+
+        *** Firebase ***
+
+- Es una plataforma de servicios para el desarrollo de apps.
+
+- Permite de manera simple y rapida y crear aplicaciones ricas en contenido, interactividad y persistencia 
+
+- Si bien nosotros usaremos el free-tier (spark), una vez que se excedan las cuotas podemos configurarlo para 
+
+utilizar un pla "pay-as-you-go" que cobra de acuerdo al consumo
+
+- No requerimos extensos conocimientos de infraestructura o mantenimiento para poder tener nuestra app escalable
+
+
+
+
+        *** Firestore ***
+
+En el panel podemos acceder a Firestore para empezar a diseñar nuestra capa de datos dinamicos y poder enriquecer
+
+la app 
+
+Es una de las soluciones para acceder a informacion
+
+
+
+    * Creando un store *
+
+Desde el mismo panel podemos crear una base de datos haciendo clic en Cloud Firestore en el panel de la izquierda
+
+y hacer clic en "Crear base de datos" 
+
+No confundir con storage, que es otro servicio de firebase dedicado a ofrecer Almacenamiento de archivos
+
+Ahi el mismo panel podemos crear una base de datos. Por ahora elegiremos el modo de prueba (sin control de acceso)
+
+
+Es una opcion facil para desarrollar rapido, aunque debes considerar que la base estara expuesta por 30 dias o 
+
+hasta que restrinjas el acceso como indica
+
+
+
+    * Creando un store - Datacenter (DC)*
+
+Usualmente viene preconfigurado para DC en us-central y esta bien por ahora ya que es un DC multi-region 
+
+Los DC impactan en los costos efectivos, verifica estos specs en la seccion de pricing
+
+
+
+    * Creando una coleccion *
+
+Almacenaremos distintos datos en distintas colecciones con sus respectivos campos. Presiona iniciar coleccion y 
+
+empecemos.
+
+Los datos se almacenan en colecciones y cada una define un tipo de entidad distinta
+
+
+
+    * Configurando una coleccion *
+
+Recuerda poner atencion al tipo de dato que brindas a cada campo para que tenga sentido con el dato que almacena 
+
+ante la duda puedas recurrir a un string
+
+
+
+    * Creando el primer documento *
+
+Crea los campos que contengan la informacion para los items de tu ItemList aloja en '/'
+
+Puedes autogenerar ids, asi que no es necesario que crees un campo especifico id, y usar el provisto por Firestore
+
+da beneficios de tolerancia a alta ocurrencia
+
+Firestore te permite crear, agregar o quitar campos cuando y como quieras
+
+una vez logrado ya tendras tu primer coleccion de Firestore creada
+
+
+
+
+
+    * Checklist *
+
+    - Registrarse en Firebase
+    
+    - Crear un nuevo proyecto
+    
+    - Creacion de Firestore
+    
+    - Inicializacion de la primera coleccion (items)
+    
+    - Crear tu primer item en la coleccion 
+    
+    - Configurar tu integracion con una webapp agregando una integracion de tipo web a tu App en "configuracion 
+    del proyecto" para obtener tu "apikeys"
+    
+    - instalar firebase en el proyecto via "npm install firebase@8.0.2"
+
+    - Configurar el client con tu api Key 
+
+    - Configurar un client factory con los datos de tu web-app provistos por la consola de firebase, de esa manera
+    se implementa una unica vez la Inicializacion y consume los recursos de modo centralizado
+
+        ex:
+            import firebase from 'firebase/app'
+            import '@firebase/firestore'
+
+            const app = firebase.initializeApp({
+
+                apiKey: "AIzaSyCeEvuDWWar_UhW9n6zppEqD5_sweAdEc",
+                authDomain:"nombrepyoyecto-ecommerce.firebaseapp.com",
+                databaseURL:"https://nombrepyoyecto-ecommerce.firebaseapp.com",
+                projectId: "nombrepyoyecto-ecommerce",
+                storageBucket:"nombrepyoyecto-ecommerce.appspot.com",
+                messageingSenderId:"501696179300",
+                appId:"1:501696179300:web:67..."
+            })
+            export function getFirebase(){
+                return app
+            }
+            export function getFirebase(){
+                return firebase.firestore(app)
+            }
+
+        
+        luego para consultar una coleccion se importa firestore desde nuestro factory
+
+        ex:
+            import {getFirestore} from '../../firebase'
+
+            useEffect(()=>{
+
+                setLoading(true)
+                
+                const db = getFirestore()                           // se inicializa el cliente
+
+                const itemCollection = db.collection('items')       // setea la coleccion
+
+                itemCollection.get().then((querySnapshot)=>{        // con el .get() invocas el llamado y con el 
+                                                                    snapshot accedes al resultado
+
+                    if(querySnapshot.size === 0){                   // con .size revisas el tamaño del resultado
+                        console.log('no results')
+                    }
+
+                    setItems(querySnapshot.docs.map(doc.data()))    // accede al set de datos mediante .docs()
+
+                }).catch((error)=>{
+                   
+                    console.log('error searching items', error)
+                }).finally(()=>{
+
+                    setLoading(false)
+                })
+
+            },[])
+
+
+
+
+    * Consulta un documento *
+
+Se debe importar firestore desde nuestro factory
+
+
+    import {getFirestore} from '../../firebase'
+
+
+1- Se debe configurar a que coleccion accederas con .collection()
+
+
+    const itemCollection = db.collection('items')
+
+
+2- Se debe configurar que documento buscas con .doc(id)
+
+
+    const item = itemCollection.doc(itemId)
+
+
+
+
+
+    * Contenido de la respuesta *
+
+
+Por diseño, en firestore el id no es parte del documento 
+
+Cada consulta a firestore nos devolvera un objeto que es la referencia de firestore que adentro tiene los
+
+siguientes campos:
+
+    - id, ref, metadata
+    
+Y tiene el metodo .data() que nos da el contenido que buscamos
+
+
+Si necesitas algo de info extra de esta consulta la puedes buscar e esa respuesta de tipo DocumentSnapshot
+
+Puedes combinar el resultado con el id si despues lo necesitas para algo realizando lo siguiente : 
+
+    setItem({id: doc.id, ...doc.data()})
+
+
+
+
+    * Consulta una coleccion sin filtros *
+
+
+Importa firestore desde nuestra factory 
+
+y en vez de un .doc() usas un .get()
+
+
+    const db = getFirestore()
+    const itemCollection = db.collection('items')
+
+    itemCollection.get().then((querySnapshot)=>{}
+
+
+
+
+    * Puedes aplicar filtros *
+
+
+Implementando un filtro simple sobre la coleccion utilizando un .where()
+
+
+    const db = getFirestore()
+
+    const itemCollection = db.collection('items')
+
+    const highPrice = itemCollection.where('price', '>', 500)
+
+    highPrice.get().then((querySnapshot)=>{}
+
+
+
+Se pueden concatenar varios filtros utilizando chaining sobre la coleccion utilizando un .where las veces que 
+
+se necesite
+
+    const db = getFirestore()
+
+    const itemCollection = db.collection('items')
+
+    const highPriceShirts = itemCollection.where('price', '>', 500).where('categoryId', '==', 'shirts')
+
+    highPriceShirts.get().then((querySnapshot)=>{}
+
+
+
+
+    * Puedes aplicar limites al resultado *
+
+
+agregando .limit() en el chaining para poner un tope de resultados
+
+    const db = getFirestore()
+
+    const itemCollection = db.collection('items')
+
+    const highPriceShirts = itemCollection.where('price', '>', 500).where('categoryId', '==', 'shirts').limit(20)
+
+    highPriceShirts.get().then((querySnapshot)=>{}
